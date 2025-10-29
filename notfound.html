@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>404 — Page Not Found</title>
+  <meta name="description" content="404 Not Found — The page you're looking for doesn't exist." />
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa4b2;
+      --accent-start:#7b61ff;
+      --accent-end:#3dd6c3;
+      --glass: rgba(255,255,255,0.04);
+      --radius:18px;
+      --maxw:1000px;
+      --ease:cubic-bezier(.2,.9,.3,1);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(59,130,246,0.06), transparent 6%),
+                  linear-gradient(180deg,#071024 0%, var(--bg) 60%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:48px;
+    }
+    .card{
+      width:100%;
+      max-width:var(--maxw);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:36px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      align-items:center;
+      backdrop-filter: blur(6px) saturate(120%);
+    }
+    .left{
+      padding:12px 18px;
+    }
+    .kicker{
+      display:inline-block;
+      font-weight:600;
+      color:var(--muted);
+      letter-spacing:0.08em;
+      font-size:13px;
+      text-transform:uppercase;
+      background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:8px 12px;
+      border-radius:999px;
+    }
+    h1{
+      margin:18px 0 8px 0;
+      font-size:64px;
+      line-height:1;
+      letter-spacing:-2px;
+      display:flex;
+      align-items:baseline;
+    }
+    h1 small{
+      font-size:22px;
+      margin-left:14px;
+      color:var(--muted);
+      font-weight:600;
+    }
+    p.lead{
+      margin:0 0 20px 0;
+      color:var(--muted);
+      max-width:56ch;
+      font-size:16px;
+      line-height:1.6;
+    }
+    .actions{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-top:6px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:600;
+      cursor:pointer;
+      transition:transform .25s var(--ease), box-shadow .2s var(--ease);
+      border:1px solid rgba(255,255,255,0.04);
+      background:linear-gradient(90deg,var(--accent-start),var(--accent-end));
+      color:#031018;
+      box-shadow: 0 6px 20px rgba(59,130,246,0.12);
+    }
+    .btn.secondary{
+      background:transparent;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .btn:active{transform:translateY(1px)}
+
+    /* right illustration */
+    .right{
+      padding:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .illustration{
+      width:100%;
+      max-width:360px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      padding:22px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 18px 40px rgba(3,6,23,0.6);
+      position:relative;
+      overflow:hidden;
+    }
+    .planet{
+      width:160px;
+      height:160px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--accent-start),var(--accent-end));
+      box-shadow: 0 8px 30px rgba(59,130,246,0.18), inset 0 -10px 40px rgba(0,0,0,0.14);
+      transform:rotate(-8deg) translateZ(0);
+      animation: float 6s var(--ease) infinite;
+      position:relative;
+    }
+    .planet::after{
+      content:'';
+      position:absolute;
+      right:8px; top:12px;
+      width:56px; height:56px; border-radius:50%;
+      background:rgba(255,255,255,0.08);
+      filter: blur(8px);
+      transform:translateZ(0);
+    }
+    .orb{
+      position:absolute;
+      width:14px; height:14px; border-radius:50%;
+      background:rgba(255,255,255,0.9);
+      right:28px; top:18px;
+      opacity:0.6;
+      animation: twinkle 3s linear infinite;
+    }
+    @keyframes float{0%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-12px) rotate(-10deg)}100%{transform:translateY(0) rotate(-8deg)}}
+    @keyframes twinkle{0%,100%{opacity:0.6;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
+
+    /* responsive */
+    @media (max-width:900px){
+      .card{grid-template-columns: 1fr; padding:24px}
+      h1{font-size:48px}
+      .right{order:-1}
+    }
+
+    /* subtle footer */
+    .meta{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* search */
+    .search{
+      display:flex;
+      gap:8px;
+      margin-top:12px;
+      max-width:560px;
+    }
+    .search input{
+      flex:1;
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.04);
+      background:var(--glass);
+      color:inherit;
+      outline:none;
+      font-size:14px;
+    }
+    .search button{
+      padding:10px 14px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.04);
+      background:linear-gradient(90deg,var(--accent-start),var(--accent-end));
+      color:#031018;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="title">
+    <section class="left">
+      <span class="kicker">Error · 404</span>
+      <h1 id="title">404 <small>Page Not Found</small></h1>
+      <p class="lead">Sorry — the page you were looking for doesn't exist, or it may have been moved. Check the URL for typos, or try one of the options below to get back on track.</p>
+
+      <form class="search" action="/search" method="get" role="search" aria-label="Search site">
+        <input name="q" type="search" placeholder="Search the site or try a keyword" aria-label="Search" />
+        <button type="submit">Search</button>
+      </form>
+
+      <div class="actions">
+        <a class="btn" href="/">Take me home</a>
+      </div>
+
+    </section>
+
+    <aside class="right" aria-hidden="true">
+      <div class="illustration">
+        <div class="planet" aria-hidden="true"></div>
+        <div class="orb" style="left:18px; top:32px; animation-delay:-0.4s"></div>
+        <div class="orb" style="right:56px; bottom:28px; animation-delay:-1.1s"></div>
+        <div class="orb" style="left:86px; bottom:56px; animation-delay:-0.35s"></div>
+      </div>
+    </aside>
+  </main>
+</body>
+</html>
