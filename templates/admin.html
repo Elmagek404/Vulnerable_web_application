@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #f5f6fa;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: #1e1e2f;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      padding-top: 40px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 40px;
+      letter-spacing: 1px;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #fff;
+      padding: 15px 25px;
+      display: block;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #34344a;
+      padding-left: 35px;
+    }
+
+    .logout {
+      margin-top: auto;
+      background-color: #ff4b5c;
+      text-align: center;
+      border-top: 1px solid #444;
+    }
+
+    .logout:hover {
+      background-color: #e84142;
+    }
+
+    /* Main content */
+    .main-content {
+      margin-left: 240px;
+      width: calc(100% - 240px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .main-content h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .main-content p {
+      color: #555;
+      font-size: 18px;
+    }
+     button {
+      background: #0078ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    button:hover {
+      background: #005fd1;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>Admin Account</h2>
+    <a href="/setting">⚙️ Settings</a>
+    <a href="#">📈 My Progress</a>
+    <a href="#">🔒 Security</a>
+    <a href="/server" id="server">Server Access</a>
+    <a href="#" id="logout">logout</a>
+  </div>
+  <div class="main-content">
+    <h1>Welcome back, {{ name }} </h1>
+    <p>Here's your personal dashboard.</p>
+  </div>
+  <script>
+    document.getElementById("logout").onclick=function(){
+        document.cookie="session=0";
+        window.location.href="/login"
+    }
+  </script>
+</body>
+</html>

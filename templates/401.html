@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>401 Unauthorized</title>
+  <style>
+    :root{
+      --bg1:#0f172a; /* dark navy */
+      --bg2:#0b1220; /* deeper */
+      --accent:#ff6b6b;
+      --muted:#9aa4b2;
+      --card:#0f1a2b;
+      --glass: rgba(255,255,255,0.04);
+      --radius:18px;
+      --maxw:880px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 600px at 10% 20%, rgba(99,102,241,0.12), transparent),
+                  radial-gradient(800px 400px at 90% 80%, rgba(99,102,241,0.06), transparent),
+                  linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+      line-height:1.45;
+    }
+
+    .card{
+      width:100%;
+      max-width:var(--maxw);
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:36px;
+      display:grid;
+      grid-template-columns: 220px 1fr;
+      gap:28px;
+      align-items:center;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+      backdrop-filter: blur(6px) saturate(1.08);
+    }
+
+    .illustration{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      min-height:160px;
+    }
+
+    .code-bubble{
+      font-weight:700;
+      font-size:56px;
+      letter-spacing:1px;
+      background:linear-gradient(90deg,var(--accent), #f97316);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    h1{margin:0;font-size:28px}
+    p.lead{margin:8px 0 18px;color:var(--muted);font-size:15px}
+
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);
+      background:var(--glass);color:inherit;text-decoration:none;font-weight:600;font-size:14px;cursor:pointer;
+      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    .btn:focus{outline:3px solid rgba(99,102,241,0.22);outline-offset:4px}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(2,6,23,0.55)}
+
+    .primary{background:linear-gradient(90deg,var(--accent), #f97316);color:#081325;border:none}
+    .primary:focus{outline:3px solid rgba(255,107,107,0.22)}
+
+    .meta{font-size:13px;color:var(--muted);margin-top:12px}
+
+    /* small screens: stack */
+    @media (max-width:720px){
+      .card{grid-template-columns:1fr; padding:22px}
+      .illustration{min-height:120px}
+      .code-bubble{font-size:48px}
+    }
+
+    /* fancy little animated underline */
+    .brand{display:inline-block;position:relative}
+    .brand::after{content:'';position:absolute;left:0;bottom:-6px;height:3px;width:100%;border-radius:3px;background:linear-gradient(90deg,#60a5fa,#a78bfa);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.9,.3,1)}
+    .brand:hover::after{transform:scaleX(1)}
+
+    /* subtle floating */
+    @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+    .illustration svg{animation:floaty 6s ease-in-out infinite}
+
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="title">
+    <div class="illustration" aria-hidden="true">
+      <!-- lock / shield svg -->
+      <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="1.5" y="6" width="21" height="12" rx="2.5" stroke="url(#g1)" stroke-width="1.2"/>
+        <path d="M16 10.5a4 4 0 10-8 0v1h8v-1z" stroke="url(#g1)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <defs>
+          <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" stop-color="#60a5fa"/>
+            <stop offset="1" stop-color="#a78bfa"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <section>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+        <div class="code-bubble" aria-hidden="true">401</div>
+        <div style="min-width:0">
+          <h1 id="title">Unauthorized — Access denied</h1>
+          <p class="lead">You don't have permission to access this resource. Please authenticate or request access from the site administrator.</p>
+        </div>
+      </div>
+
+      <div class="actions" role="group" aria-label="Actions">
+        <a class="btn primary" href="/login" role="button">Sign in</a>
+        <a class="btn" href="/" role="button">Return to homepage</a>
+        <a class="btn" href="mailto:admin@example.com" role="button">Contact admin</a>
+      </div>
+
+      <p class="meta">If you believe this is an error, include the URL and the time when contacting support. Reference ID: <span style="font-family:monospace;background:rgba(255,255,255,0.03);padding:4px 8px;border-radius:6px;">#ERR-401-<span aria-hidden="true">A1B2</span></span></p>
+    </section>
+  </main>
+</body>
+</html>
