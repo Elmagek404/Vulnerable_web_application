@@ -4,7 +4,7 @@ Vulnerable Web Application Contain Simple scenarios for beginner Pen-testers
 # How To Run It
 copy the followin command and paste it in your terminal 
 
-git clone https://github.com/Elmagek404/Vulnerable_web_application
+``git clone https://github.com/Elmagek404/Vulnerable_web_application``
 
 
 sudo pip install flask --break-system-packages
